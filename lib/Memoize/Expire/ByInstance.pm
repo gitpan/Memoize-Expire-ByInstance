@@ -8,7 +8,7 @@
     use Scalar::Util qw(weaken);
     use constant FILE_SEPERATOR => chr(0x1C);
 
-    our $VERSION = 0.500001;
+    our $VERSION = 0.500005;
 
     ############################################################################################
     ## Tie the hash to this class. Support passing a HASH => \$hashref argument to permit

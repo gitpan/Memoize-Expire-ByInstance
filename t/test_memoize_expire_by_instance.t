@@ -314,10 +314,12 @@ use blib;
     {
         my ($self) = @_;
         my $a = TestDestroyChaining->new( max_num_uses => 1 );
+        my $death = "";
         eval {
-            { undef $a };
+            $SIG{__DIE__} = sub { ($death) = @_; };
+            undef $a;
         };
-        ok( $@ =~ m/intentionally\sdied/gsmxi, 'we intentionally died from chained DESTROY' );
+        ok( $death =~ m/intentionally\sdied/gsmxi, 'we intentionally died from chained DESTROY' );
     }
 
     sub argument_handling : Test(8)
